@@ -2,3 +2,17 @@
     background-color: lightgreen;
     height: 2000000px;
 }
+.form-input {
+    width: 100%;
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #e70000;
+    border-radius: 5px;
+    outline: none;
+  }
+
+h1.typecode{
+    color:#e70000;
+    padding-top: 2000px;
+}

@@ -30,5 +30,31 @@ const addToDotoDOM = (element) => {
                 document.getElementById('todo-list').appendChild(div)
 };
 
+const createTodo = (e) => {
+    e.preventDefault();
+    const newTodo = {
+        title: e.target.firstElementChild.value,
+        completed: false
+    }
 
-getTodos();
+    fetch(apiUrl,{
+        method:'POST',
+        body:JSON.stringify(newTodo),
+        headers: {
+            'Content-Type':'application/json'
+        }
+    }).then(res => res.json())
+    .then(data => addToDotoDOM(data))
+    console.log(`in create to do, the value typed in form is ${e.target.firstElementChild.value}`);//we get whatever we type in the text field
+}
+
+const toggleCompleted = (e) => {
+    e.target.classList.toggle('done');
+}
+const init = () => {
+    document.addEventListener('DOMContentLoaded',getTodos);
+    document.querySelector('#todo-form').addEventListener('submit',createTodo);
+    document.querySelector('#todo-list').addEventListener('click',toggleCompleted);
+}
+
+init();
